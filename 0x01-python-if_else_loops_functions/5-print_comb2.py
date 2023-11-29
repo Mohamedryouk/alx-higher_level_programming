@@ -1,4 +1,3 @@
 #!/usr/bin/python3
 for num in range(0, 100):
-    print("%02d," % (num), end=" ")
-print("\n")
+    print("{0:02d}{1}".format(int(num), ',' if num < 99 else "\n"), end=" ")
