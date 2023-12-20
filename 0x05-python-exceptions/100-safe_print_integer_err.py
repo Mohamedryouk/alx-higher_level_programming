@@ -1,5 +1,13 @@
 #!usr/bin/python3
 import sys
+"""
+  Print an integer "{:d}".format().
+Args:
+  value (int): The integer.
+Return:
+  if typeerror or valueerror - false.
+  otherwise true.
+"""
 def safe_print_integer_err(value):
   try:
     print("{:d}".format(value))
