@@ -4,6 +4,8 @@ Module 2-rectangle
 Contains class Rectangle
 with private attribute width and height
 """
+
+
 class Rectangle:
     """
     Defines class rectangle with private attribute width and height
