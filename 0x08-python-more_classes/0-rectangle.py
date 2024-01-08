@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-"""
-The Rectangle module
+# 0-rectangle.py
+"""Defines an empty Rectangle class using the pass keyword"""
 
-This module provides the Rectangle object
-"""
-
-class Rectangle():
-	""" simple Rectangle class """
-	pass
+class Rectangle:
+    """Represent a rectangle."""
+    pass
