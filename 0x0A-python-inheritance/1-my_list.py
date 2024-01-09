@@ -7,5 +7,4 @@ class MyList(list):
     Return:
     none
     """
-    sorted_list = sorted(self)
-    print(sorted_list)
+    print(sorted(self.copy()))
