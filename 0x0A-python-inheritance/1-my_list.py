@@ -1,4 +1,11 @@
 #!/usr/bin/python3
-class Mylist(list):
+class MyList(list):
   def print_sorted(self):
-    pass
+    """
+    print the list in ascending order.
+
+    Return:
+    none
+    """
+    sorted_list = sorted(self)
+    print(sorted_list)
