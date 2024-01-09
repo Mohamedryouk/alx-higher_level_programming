@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-class MyList(list):
-  def print_sorted(self):
-    """
-    print the list in ascending order.
+"""My list module"""
 
-    Return:
-    none
-    """
-    print(sorted(self.copy()))
+
+class MyList(list):
+    """Class that inherits from list"""
+    def print_sorted(self):
+        """prints sorted list"""
+        print(sorted(self.copy()))
