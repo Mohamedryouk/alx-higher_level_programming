@@ -4,9 +4,8 @@ Contains a function to add attribute
 """
 
 
-def add_attribute(a_class, name, value):
+def add_attribute(obj, name, value):
     """Adds a new attribute to an obj if possible"""
-    if hasattr(a_class, "__dic__"):
-        setattr(a_class, name, value)
-    else:
+    if not hasattr(obj, "__dic__"):
         raise TypeError("can't add new attribute")
+    setattr(obj, name ,value)
