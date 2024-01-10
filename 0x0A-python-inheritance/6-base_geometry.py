@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-"""
-contains the class BaseGeometry
-"""
+"""Module for class BaseGeometry"""
 
 
 class BaseGeometry:
-    """A class with public attribute area"""
+    """A BaseGeometry class has instance of obj area"""
     def area(self):
-        """raises an exception flag when called"""
+        """Method to compute area"""
         raise Exception("arew() is not implemented")
