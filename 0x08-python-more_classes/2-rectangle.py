@@ -3,6 +3,8 @@
 Class to calculate the recangle then getting
 the area at the end
 """
+
+
 class Rectangle:
     """
     Defines class rectangle with private attribute width and height
