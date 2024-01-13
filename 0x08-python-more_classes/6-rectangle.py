@@ -1,29 +1,9 @@
 #!/usr/bin/python3
-"""
-Module 3-rectangle
-contains rectangle with attributes width and height
-"""
-
 
 class Rectangle:
     number_of_instances = 0
-    """
-    Defines class rectangle with private attribute width and height
-    Args:
-        width (int): width
-        height (int): height
-    Functions:
-        __init__(self, width, height)
-        width(self)
-        width(self, value)
-        height(self)
-        height(self, value)
-        area(self)
-        perimeter(self)
-    """
 
     def __init__(self, width=0, height=0):
-        """Initialize class"""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
@@ -35,7 +15,7 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """settter for width"""
+        """Setter for width"""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -49,7 +29,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        """setter for height"""
+        """Setter for height"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -57,19 +37,15 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """area of rectangle"""
+        """Calculate and return the area of the rectangle"""
         return self.width * self.height
 
     def perimeter(self):
-        """perimeter of rectangle"""
-
-        if self.width > 0 and self.height > 0:
-            return 2 * (self.width + self.height)
-        else:
-            return 0
+        """Calculate and return the perimeter of the rectangle"""
+        return 2 * (self.width + self.height) if self.width > 0 and self.height > 0 else 0
 
     def __str__(self):
-        """str function returns in # format"""
+        """Return a string representation of the rectangle"""
         if self.width == 0 or self.height == 0:
             return ""
         rectangle_str = ""
@@ -78,10 +54,10 @@ class Rectangle:
         return rectangle_str.rstrip('\n')
 
     def __repr__(self):
-        """repr function to print or return repr of string"""
+        """Return a string representation for recreation using eval()"""
         return f"Rectangle({self.width}, {self.height})"
 
     def __del__(self):
-        """Print a message when an instance is deleted"""
+        """Print a message when an instance is deleted and decrement the number_of_instances"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
