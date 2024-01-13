@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Module 3-rectangle
+contains rectangle with attributes width and height
+"""
+
 
 class Rectangle:
     number_of_instances = 0
