@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def is_safe(board, row, col, N):
     # Check if a queen can be placed in this position
     for i in range(row):
@@ -10,10 +11,12 @@ def is_safe(board, row, col, N):
             return False
     return True
 
+
 def print_solution(board):
     # Print the current solution
     solution = [[i, board[i]] for i in range(len(board))]
     print(solution)
+
 
 def solve_nqueens(board, row, N):
     # Recursive function to solve N Queens problem
@@ -28,7 +31,9 @@ def solve_nqueens(board, row, N):
             board[row] = col
             solve_nqueens(board, row + 1, N)
             # Backtrack if needed
+
             board[row] = -1
+
 
 def nqueens(N):
     if not isinstance(N, int):
@@ -41,6 +46,7 @@ def nqueens(N):
 
     board = [-1] * N
     solve_nqueens(board, 0, N)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
