@@ -60,9 +60,7 @@ class Rectangle:
 
     def perimeter(self):
         """perimeter of rectangle"""
-        if self.width == 0 or self.height == 0:
-            return 0
-        return 2 * self.width * self.height - 4
+        return 2 * (self.width + self.height) if self.width > 0 and self.height > 0 else 0
 
     def __str__(self):
         """str function returns in # format"""
@@ -76,4 +74,7 @@ class Rectangle:
     def __repr__(self):
         """repr function to print or return repr of string"""
         return f"Rectangle({self.width}, {self.height})"
+
+    def __del__(self):
+        """Print a message when an instance is deleted"""
         print("Bye rectangle...")
