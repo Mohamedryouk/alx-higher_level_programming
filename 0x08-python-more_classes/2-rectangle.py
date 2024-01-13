@@ -1,4 +1,4 @@
-#!/usr/bin/pyhon3
+#!/usr/bin/python3
 """
 Module 2-rectangle
 contains class Rectangle with private attributes
