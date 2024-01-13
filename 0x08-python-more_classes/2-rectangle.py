@@ -21,7 +21,6 @@ class Rectangle:
         area(self)
         perimeter(self)
     """
-
     def __init__(self, width=0, height=0):
         """Initialize rectangle"""
         self.width = width
@@ -61,4 +60,6 @@ class Rectangle:
 
     def perimeter(self):
         """Calculates and return the perimeter"""
+        if self.__width == 0 or self.__height == 0:
+            return 0
         return 2 * (self.width + self.height)
