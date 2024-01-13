@@ -1,7 +1,7 @@
 #!/usr/bin/pyhon3
 """
-Class to calculate the recangle then getting
-the area at the end
+Module 2-rectangle
+contains class Rectangle with private attributes
 """
 
 
@@ -17,6 +17,8 @@ class Rectangle:
         width(self, value)
         height(self)
         height(self, value)
+        area(self)
+        perimeter(self)
     """
 
     def __init__(self, width=0, height=0):
