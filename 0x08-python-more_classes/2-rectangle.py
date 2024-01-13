@@ -2,6 +2,7 @@
 """
 Module 2-rectangle
 contains class Rectangle with private attributes
+and public area nd perimeter
 """
 
 
