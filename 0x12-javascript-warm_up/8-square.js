@@ -8,5 +8,5 @@ for (let i = 0; i < firstArgument; i++) {
   for (let j = 0; j < firstArgument; j++) {
     row += 'X';
   }
-  console.log(row);
+  process.stdout.write(row + '\n');
 }
