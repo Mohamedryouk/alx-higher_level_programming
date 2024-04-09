@@ -1,12 +1,13 @@
 #!/usr/bin/node
-const firstArgument = process.argv[2];
-if (firstArgument === undefined) {
+const firstArgument = parseInt(process.argv[2]);
+if (isNaN(firstArgument)) {
   console.log('Missing size');
-}
-for (let i = 0; i < firstArgument; i++) {
-  let row = '';
-  for (let j = 0; j < firstArgument; j++) {
-    row += 'X';
+} else {
+  for (let i = 0; i < firstArgument; i++) {
+    let row = '';
+    for (let j = 0; j < firstArgument; j++) {
+      row += 'X';
+    }
+    console.log(row);
   }
-  process.stdout.write(row + '\n');
 }
