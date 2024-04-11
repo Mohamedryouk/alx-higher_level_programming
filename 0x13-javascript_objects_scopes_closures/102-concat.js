@@ -1,6 +1,7 @@
 #!/usr/bin/node
-const fs = require('fs');
 
-const fArg = fs.readFileSync(process.argv[2]).toString();
-const sArg = fs.readFileSync(process.argv[3]).toString();
-fs.writeFileSync(process.argv[4], fArg + sArg);
+const { list } = require('./100-data');
+
+const newList = list.map((value, index) => value * index);
+console.log('Initial list:', list);
+console.log('New list:', newList);
