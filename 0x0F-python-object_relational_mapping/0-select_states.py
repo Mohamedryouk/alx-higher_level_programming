@@ -1,21 +1,16 @@
 #!/usr/bin/python3
+"""Lists states"""
+
 import MySQLdb
-import sys
+from sys import argv
 
 def list_states(username, password, database):
-    try:
-        db = MySQLdb.connect(host="localhost", port=8080, user=username, passwd=password, db=database)
-        cursor = db.cursor()
-        cursor.execute("SELECT * FROM states")
-        results = cursor.fetchall()
-        for row in results:
-            print(row)
-        
-        cursor.close()
-        db.close()
-    except MySQLdb.Error as e:
-        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
-if __name__ == "__name__":
-    if len(sys.argv) != 4:
-        print("Usage: {} username password database".format(sys.argv[0]))
-        sys.exit(1)
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1], passwd=argv[2], db=argv[3], charset="utf8")
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+    results = cursor.fetchall()
+    for row in results:
+        print(row)
+    cursor.close()
+    db.close()
+
