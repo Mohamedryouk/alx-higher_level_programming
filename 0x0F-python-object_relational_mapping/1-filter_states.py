@@ -1,26 +1,35 @@
 #!/usr/bin/python3
 """Lists states"""
+import MySQLdb
+import sys
 
-if __name__ == '__main__':
-    from sys import argv
-    import MySQLdb as mysql
+
+if __name__ == "__main__":
+
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    db_name = sys.argv[3]
 
     try:
-        db = mysql.connect(host='localhost', port=3306, user=argv[1],
-                           passwd=argv[2], db=argv[3])
-    except Exception:
-        print('Failed to connect to the database')
-        exit(0)
+        conn = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=mysql_username,
+            passwd=mysql_password,
+            db=db_name,
+            charset="utf8"
+        )
+    except MySQLdb.Error as e:
+        print("Error connecting to database: {}".format(e))
+        sys.exit(1)
 
-    cursor = db.cursor()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' \
+                ORDER BY states.id ASC")
+    rows = cur.fetchall()
 
-    cursor.execute("SELECT * FROM states \
-                    WHERE name LIKE BINARY 'N%' ORDER BY id ASC;")
-
-    result_query = cursor.fetchall()
-
-    for row in result_query:
+    for row in rows:
         print(row)
 
-    cursor.close()
-    db.close()
+    cur.close()
+    conn.close()
