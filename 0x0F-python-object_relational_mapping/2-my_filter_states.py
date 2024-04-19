@@ -1,43 +1,17 @@
 #!/usr/bin/python3
+"""  lists all states from the database hbtn_0e_0_usa """
 import MySQLdb
 import sys
 
-def search_states(username, password, database, state_name):
-    try:
-        # Connect to MySQL server
-        conn = MySQLdb.connect(host="localhost",
-                               user=username,
-                               passwd=password,
-                               db=database,
-                               port=3306)
-        
-        # Create cursor object
-        cur = conn.cursor()
-
-        # Create SQL query with user input using format
-        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY states.id ASC"
-        cur.execute(query, ('%' + state_name + '%',))
-
-        # Fetch all the rows
-        rows = cur.fetchall()
-
-        # Display results
-        for row in rows:
-            print(row)
-
-        # Close cursor and connection
-        cur.close()
-        conn.close()
-
-    except MySQLdb.Error as e:
-        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
-        sys.exit(1)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: python script.py <username> <password> <database> <state_name>")
-        sys.exit(1)
-
-    username, password, database, state_name = sys.argv[1:]
-
-    search_states(username, password, database, state_name)
+    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
+                .format(sys.argv[4]))
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
+    db.close()
