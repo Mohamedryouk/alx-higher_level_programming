@@ -3,7 +3,6 @@ import MySQLdb
 import sys
 
 def search_states(username, password, database, state_name):
-    """Search for the states"""
     try:
         # Connect to MySQL server
         conn = MySQLdb.connect(host="localhost",
@@ -15,11 +14,9 @@ def search_states(username, password, database, state_name):
         # Create cursor object
         cur = conn.cursor()
 
-        # Create SQL query with user input
-        query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY states.id ASC".format(state_name)
-
-        # Execute the query
-        cur.execute(query)
+        # Create SQL query with user input using format
+        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY states.id ASC"
+        cur.execute(query, ('%' + state_name + '%',))
 
         # Fetch all the rows
         rows = cur.fetchall()
@@ -28,6 +25,7 @@ def search_states(username, password, database, state_name):
         for row in rows:
             print(row)
 
+        # Close cursor and connection
         cur.close()
         conn.close()
 
