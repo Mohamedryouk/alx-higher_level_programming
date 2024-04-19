@@ -1,25 +1,43 @@
-#!/usr/bin/python3
-"""Lists states"""
 import MySQLdb
 import sys
 
+def search_states(username, password, database, state_name):
+    try:
+        # Connect to MySQL server
+        conn = MySQLdb.connect(host="localhost",
+                               user=username,
+                               passwd=password,
+                               db=database,
+                               port=3306)
+        
+        # Create cursor object
+        cur = conn.cursor()
 
-import MySQLdb as db
-from sys import argv
+        # Create SQL query with user input
+        query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY states.id ASC".format(state_name)
 
-if __name__ == '__main__':
-    """
-    Access to the database and get the states
-    from the database.
-    """
-    db_connect = db.connect(host="localhost", port=3306,
-                            user=argv[1], passwd=argv[2], db=argv[3])
-    db_cursor = db_connect.cursor()
+        # Execute the query
+        cur.execute(query)
 
-    db_cursor.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY \
-                        states.id ASC".format(argv[4]))
-    rows_selected = db_cursor.fetchall()
+        # Fetch all the rows
+        rows = cur.fetchall()
 
-    for row in rows_selected:
-        print(row)
+        # Display results
+        for row in rows:
+            print(row)
+
+        cur.close()
+        conn.close()
+
+    except MySQLdb.Error as e:
+        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
+        sys.exit(1)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        print("Usage: python script.py <username> <password> <database> <state_name>")
+        sys.exit(1)
+
+    username, password, database, state_name = sys.argv[1:]
+
+    search_states(username, password, database, state_name)
