@@ -1,24 +1,27 @@
 #!/usr/bin/python3
 """
-This script defines a State class and
-a Base class to work with MySQLAlchemy ORM.
+This script lists all State objects
+from the database `hbtn_0e_6_usa`.
 """
 
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sys import argv
+from model_state import State, Base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-Base = declarative_base()
-
-
-class State(Base):
-    """State class
-
-    Attributes:
-        __tablename__ (str): The table name of the class
-        id (int): The State id of the class
-        name (str): The State name of the class
+if __name__ == "__main__":
     """
-    __tablename__ = 'states'
+    Access to the database and get the states
+    from the database.
+    """
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128), nullable=False)
+    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+        argv[1], argv[2], argv[3])
+
+    engine = create_engine(db_url)
+    Session = sessionmaker(bind=engine)
+
+    session = Session()
+
+    for instance in session.query(State).order_by(State.id):
+        print('{0}: {1}'.format(instance.id, instance.name))
