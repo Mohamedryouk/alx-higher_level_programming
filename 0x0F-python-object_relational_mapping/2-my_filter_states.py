@@ -3,6 +3,7 @@ import MySQLdb
 import sys
 
 def search_states(username, password, database, state_name):
+    """Search for the states"""
     try:
         # Connect to MySQL server
         conn = MySQLdb.connect(host="localhost",
