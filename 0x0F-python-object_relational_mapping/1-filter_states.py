@@ -3,8 +3,6 @@
 import MySQLdb
 import sys
 
-fi = 34
-
 
 def list_states_with_n(username, password, database):
     """listing states"""
