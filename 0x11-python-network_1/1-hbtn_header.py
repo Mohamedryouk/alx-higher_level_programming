@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-# Script that takes in a URL and sends
-# a request to the URL and displays the values
-
+"""
+    request the response ID
+"""
 import urllib.request
 import sys
 
