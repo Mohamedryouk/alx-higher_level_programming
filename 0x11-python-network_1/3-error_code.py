@@ -10,7 +10,13 @@ import urllib.request
 
 if __name__ == "__main__":
     """
-    main: name
+    Main function to print the content of the URL or handle errors.
+
+    Args:
+        url (str): The URL to fetch content from.
+
+    Returns:
+        None
     """
     url = sys.argv[1]
 
