@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-# Taking URL and an email and send a POST request to the passed URL and email
+"""
+Module to send a POST request with an email to a specified URL.
+Uses only urllib and sys packages.
+"""
 import sys
 import urllib.request
 import urllib.parse
