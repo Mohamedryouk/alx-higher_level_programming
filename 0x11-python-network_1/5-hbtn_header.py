@@ -11,7 +11,6 @@ if __name__ == "__main__":
     """
     main entry to get URL
     """
-    
     url = sys.argv[1]
     try:
         req = requests.get(url)
