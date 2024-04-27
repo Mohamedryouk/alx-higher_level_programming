@@ -12,26 +12,17 @@ Example:
     ./script_name.py https://example.com
 """
 
+
 import urllib.request
 import sys
 
+
 if __name__ == "__main__":
     """
-    Main entry point of the script.
+    main - name
     """
-    if len(sys.argv) < 2:
-        print("Usage: {} <URL>".format(sys.argv[0]))
-        sys.exit(1)
-
-    # Accepting a URL
     url = sys.argv[1]
 
-    # Try sending a request to the provided URL
-    try:
-        with urllib.request.urlopen(url) as response:
-            # Getting the request id from the response headers
-            request_id = response.headers.get("X-Request-Id")
-            print("Request ID:", request_id)
-    except Exception as e:
-        # Exception handler for URL errors
-        print("Error:", e)
+    request = urllib.request.Request(url)
+    with urllib.request.urlopen(request) as response:
+        print(dict(response.headers).get("X-Request-Id"))
