@@ -11,12 +11,10 @@ if __name__ == "__main__":
     """
     main entry to get URL
     """
-    if len(sys.argv) < 2:
-        sys.exit(1)
+    
     url = sys.argv[1]
     try:
-        with requests.post(url) as response:
-            req_id = response.headers.get("X-Request-Id")
-            print("{}".format(req_id))
+        req = requests.get(url)
+        print(req.headers.get("X-Request-Id"))
     except Exception as e:
         pass
