@@ -6,6 +6,19 @@ import urllib.parse
 
 
 def postEmail(url, email):
+    """
+        Sends a POST request to the specified URL with the given email.
+
+        Args:
+            url (str): The URL to send the POST request to.
+            email (str): The email to be sent in the POST request.
+
+        Returns:
+            None
+
+        Raises:
+            Exception: If an error occurs during the POST request.
+        """
     url = sys.argv[1]
     email = sys.argv[2]
     print("Your email is:", email)

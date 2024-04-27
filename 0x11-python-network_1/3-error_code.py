@@ -8,6 +8,9 @@ import urllib.request
 
 
 if __name__ == "__main__":
+    """
+    main: name
+    """
     url = sys.argv[1]
 
 try:
