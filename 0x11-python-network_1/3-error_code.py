@@ -7,6 +7,7 @@ import sys
 import urllib.request
 from urllib.error import URLError, HTTPError
 
+
 def main(url):
     """
     Main function to print the content of the URL or handle errors.
@@ -25,6 +26,7 @@ def main(url):
         print(f"Error code: {e.code}")
     except URLError as er:
         print(f"Connection error: {er.reason}")
+
 
 if __name__ == "__main__":
     """
