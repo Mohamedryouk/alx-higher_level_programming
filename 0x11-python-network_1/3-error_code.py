@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-# A script that takes in a URL and sends a request to the URL
-# and displays the body of the response
+"""
+Printing the HTTPError code
+"""
 import urllib
 import sys
 from urllib.error import URLError, HTTPError
