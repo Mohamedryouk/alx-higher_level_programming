@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#Fetching a URL using urllib package.
+# Fetching a URL using urllib package.
 
 import urllib.request
 
