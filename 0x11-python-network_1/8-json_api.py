@@ -9,11 +9,12 @@ if __name__ == "__main__":
     else:
         q = ""
     # posting the request to the url
-    response = requests.post('http://0.0.0.0:5000/search_user', data={'q':q})
+    response = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
     try:
         response_json = response.json()
         if response_json:
-            print("[{}] {}".format(response_json.get('id'), response_json.get('name')))
+            res = response_json.get('name')
+            print("[{}] {}".format(response_json.get('id'), res))
         else:
             print("No result")
     except ValueError:
